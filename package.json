@@ -1,0 +1,21 @@
+{
+	"name": "@bhar2254/string-utils",
+	"version": "1.0.0",
+	"description": "An npm package for extending String functionality.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"string",
+		"utilities",
+		"manipulation",
+		"prototype"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bhar2254/string-utils.git"
+	},
+	"author": "Blaine Harper",
+	"license": "GPL-3.0-or-later"
+}
