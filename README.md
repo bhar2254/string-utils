@@ -15,7 +15,7 @@ npm install @bhar2254/string-utils
 To load the custom string methods:
 
 ```javascript
-const { loadStringPrototypes } = require('string-utils');
+const { loadStringPrototypes } = require('@bhar2254/string-utils');
 
 // Load custom prototypes
 loadStringPrototypes();
