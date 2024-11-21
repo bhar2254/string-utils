@@ -1,4 +1,4 @@
-# string-utils
+  # string-utils
 
 A lightweight utility library that extends JavaScript's `String.prototype` with powerful and convenient methods for string manipulation.
 
@@ -7,7 +7,7 @@ A lightweight utility library that extends JavaScript's `String.prototype` with 
 Install the package using NPM:
 
 ```bash
-npm install string-utils
+npm install @bhar2254/string-utils
 ```
 
 ## Usage
