@@ -6,17 +6,17 @@
 
 function capitalizeFirst(string) {
 	// Handle both standalone and String prototype contexts
-	if (typeof this === 'string')
-	  string = this
+	if (this instanceof String)
+		string = this
   
-	if (typeof string !== 'string') return string
+	if (!this instanceof String) return string
   
 	// Split the string into an array of words
 	const arr = string.split(" ")
   
 	// Capitalize the first letter of each word
 	for (let i = 0; i < arr.length; i++) {
-	  arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1)
+		arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1)
 	}
   
 	// Join the words back into a single string
@@ -24,43 +24,39 @@ function capitalizeFirst(string) {
 }
 
 function toCamelCase(string) {
-	if (typeof this === 'string') string = this
-	return string
-		.replace(/[_-\s]+(.)?/g, (_, char) => (char ? char.toUpperCase() : ''))
-		.replace(/^(.)/, (char) => char.toLowerCase())
+	if (this instanceof String) string = this
+	return string.replace(/[_-\s]+(.)?/g, (_, char) => (char ? char.toUpperCase() : '')).replace(/^(.)/, (char) => char.toLowerCase())
 }
 
 function toSnakeCase(string) {
-	if (typeof this === 'string') string = this
-	return string
-		.replace(/[\sA-Z]+/g, (match, index) => (index ? '_' : '') + match.trim().toLowerCase())
+	if (this instanceof String) string = this
+	return string.replace(/[\sA-Z]+/g, (match, index) => (index ? '_' : '') + match.trim().toLowerCase())
 }
 
 function toKebabCase(string) {
-	if (typeof this === 'string') string = this
-	return string
-		.replace(/[\sA-Z]+/g, (match, index) => (index ? '-' : '') + match.trim().toLowerCase())
+	if (this instanceof String) string = this
+	return string.replace(/[\sA-Z]+/g, (match, index) => (index ? '-' : '') + match.trim().toLowerCase())
 }
 
 function truncate(string, length = 100) {
-	if (typeof this === 'string') string = this
+	if (this instanceof String) string = this
 	if (string.length <= length) return string
 	return string.slice(0, length) + '...'
 }
   
 function isPalindrome(string) {
-	if (typeof this === 'string') string = this
+	if (this instanceof String) string = this
 	const normalized = string.replace(/[\s\W_]+/g, '').toLowerCase()
 	return normalized === normalized.split('').reverse().join('')
 }
 
 function containsOnlyLetters(string) {
-	if (typeof this === 'string') string = this
+	if (this instanceof String) string = this
 	return /^[a-zA-Z]+$/.test(string)
 }
 
 function pad(string, length, char = ' ', direction = 'right') {
-	if (typeof this === 'string') string = this
+	if (this instanceof String) string = this
 	if (string.length >= length) return string
   
 	const padLength = length - string.length
@@ -79,46 +75,52 @@ function pad(string, length, char = ' ', direction = 'right') {
 }
 
 function reverse(string) {
-	if (typeof this === 'string') string = this;
-	return string.split('').reverse().join('');
+	if (this instanceof String) string = this
+	return string.split('').reverse().join('')
 }
 
 function wordCount(string) {
-	if (typeof this === 'string') string = this
+	if (this instanceof String) string = this
 	return string.trim().split(/\s+/).length
 }  
 
 function capitalizeWords(string) {
-	if (typeof this === 'string') string = this
-	return string
-		.split(/[\s_]+/)
+	if (this instanceof String) string = this
+	if (!this instanceof String) return string
+	return string.split(/[\s_]+/)
 		.map(word => word.charAt(0).toUpperCase() + word.slice(1))
 		.join(' ')
 }
 
 function removeVowels(string) {
-	if (typeof this === 'string') string = this
+	if (this instanceof String) string = this
+	if (!this instanceof String) return string
 	return string.replace(/[aeiouAEIOU]/g, '')
 }
 
 function replaceSpacesWith(string, char = '_') {
-	if (typeof this === 'string') string = this
+	if (this instanceof String) string = this
+	if (!this instanceof String) return string
 	return string.replace(/\s+/g, char)
 }
- 
-function replaceUnderscoreWith(string, char = ' ') {
-	// Handle both standalone and String prototype contexts
-	if (typeof this === 'string')
-	  string = this
-  
-	if (typeof string !== 'string') return string
-  
-	// Replace all underscores with spaces
-	return string.replace(/_/g, char)
+
+function replaceUnderscoreWith(string = ' ', char = ' ') {
+    // Handle both standalone and String prototype contexts
+    if (this instanceof String){
+		char = string
+        string = this
+	}
+
+    // If string is still not valid, return it as is
+    if (!this instanceof String)
+        return string
+
+    // Replace all underscores with the specified character
+    return string.replace(/_/g, char);
 }
 
 function stripHtml(string) {
-	if (typeof this === 'string') string = this
+	if (this instanceof String) string = this
 	return string.replace(/<\/?[^>]+(>|$)/g, '')
 }
   

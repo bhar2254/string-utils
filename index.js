@@ -10,4 +10,5 @@ function loadStringPrototypes() {
 
 module.exports = {
     loadStringPrototypes,
+    ...stringPrototypes
 }

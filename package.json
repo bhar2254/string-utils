@@ -1,6 +1,6 @@
 {
 	"name": "@bhar2254/string-utils",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "An npm package for extending String functionality.",
 	"main": "index.js",
 	"scripts": {
